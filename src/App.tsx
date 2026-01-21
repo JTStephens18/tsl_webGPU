@@ -15,6 +15,8 @@ import {
 } from 'three/tsl';
 import type { WebGPURendererParameters } from 'three/src/renderers/webgpu/WebGPURenderer.Nodes.js';
 
+import InteractiveSphere from './components/InteractiveSphere';
+
 declare module "@react-three/fiber" {
   interface ThreeElements extends ThreeToJSXElements<typeof THREE> { }
 }
@@ -83,9 +85,14 @@ const App = () => {
           return renderer;
         }}
       >
+
+        <ambientLight intensity={0.5} />
+        <directionalLight position={[10, 10, 5]} intensity={1} castShadow />
+
         <Suspense>
           <OrbitControls />
-          <Core />
+          {/* <Core /> */}
+          <InteractiveSphere />
         </Suspense>
       </Canvas>
     </>
